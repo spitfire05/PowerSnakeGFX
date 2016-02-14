@@ -356,6 +356,8 @@ function Draw-Score
     $f.UpdateScore($global:score)
 }
 
+$FoodEatenSound = New-Object System.Media.SoundPlayer "gfx\chrup90ms.wav"
+
 #Create a window, and set its properties.
 #[System.Windows.Forms.Form]$f = New-Object System.Windows.Forms.Form
 $global:f = New-Object SnakeForm
@@ -386,6 +388,15 @@ $f.ImCornerRU = [System.Drawing.Image]::FromFile($path)
 $f.ImCornerRD = [System.Drawing.Image]::FromFile($path)
 $f.ImCornerLU = [System.Drawing.Image]::FromFile($path)
 $f.ImCornerLD = [System.Drawing.Image]::FromFile($path)
+
+$path = Join-Path -ChildPath "japko1.png" -Path $dir_gfx
+$ImAnimApple1 = [System.Drawing.Image]::FromFile($path)
+$path = Join-Path -ChildPath "japko2.png" -Path $dir_gfx
+$ImAnimApple2 = [System.Drawing.Image]::FromFile($path)
+$path = Join-Path -ChildPath "japko3.png" -Path $dir_gfx
+$ImAnimApple3 = [System.Drawing.Image]::FromFile($path)
+$path = Join-Path -ChildPath "japko4.png" -Path $dir_gfx
+$ImAnimApple4 = [System.Drawing.Image]::FromFile($path)
 
 Reset-Game
 $global:GameOver = 0
@@ -617,6 +628,21 @@ $f.OnTimerTick = {
     }
     else
     { # food eaten
+        #play sound
+        if(!$nosound)
+        {
+            $FoodEatenSound.Play()
+        }
+    
+        #play animation
+        Draw-Tile $ImAnimApple1 $global:food.x  $global:food.y
+        sleep -Milliseconds ($speed_/4)
+        Draw-Tile $ImAnimApple2 $global:food.x  $global:food.y
+        sleep -Milliseconds ($speed_/4)
+        Draw-Tile $ImAnimApple3 $global:food.x  $global:food.y
+        sleep -Milliseconds ($speed_/4)
+        Draw-Tile $ImAnimApple4 $global:food.x  $global:food.y
+    
         #increment score
         $global:score++
         Draw-Score
