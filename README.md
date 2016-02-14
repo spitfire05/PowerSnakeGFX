@@ -11,6 +11,10 @@ The `speed` parameter accepts values of 1-5 (defaults to 3).
 
 The `nosound` parameter can bu used to surpress console beep on snake collision.
 
+## Enviroment requirements
+
+Tested in PowerShell 4, not tested on 3, does not work on 2.
+
 ## Current state
 
 Wrapped-up in ASAP mode. Still has few graphical glitches (elements overdrawing), but is 100% playable and should be stable.
