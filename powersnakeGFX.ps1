@@ -357,6 +357,7 @@ function Draw-Score
 }
 
 $FoodEatenSound = New-Object System.Media.SoundPlayer "gfx\chrup90ms.wav"
+$FoodEatenSound.Load()
 
 #Create a window, and set its properties.
 #[System.Windows.Forms.Form]$f = New-Object System.Windows.Forms.Form
@@ -636,11 +637,11 @@ $f.OnTimerTick = {
     
         #play animation
         Draw-Tile $ImAnimApple1 $global:food.x  $global:food.y
-        sleep -Milliseconds ($speed_/4)
+        Start-Sleep -Milliseconds ($speed_/3)
         Draw-Tile $ImAnimApple2 $global:food.x  $global:food.y
-        sleep -Milliseconds ($speed_/4)
+        Start-Sleep -Milliseconds ($speed_/3)
         Draw-Tile $ImAnimApple3 $global:food.x  $global:food.y
-        sleep -Milliseconds ($speed_/4)
+        Start-Sleep -Milliseconds ($speed_/3)
         Draw-Tile $ImAnimApple4 $global:food.x  $global:food.y
     
         #increment score
