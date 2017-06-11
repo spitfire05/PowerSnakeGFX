@@ -356,7 +356,7 @@ function Draw-Score
     $f.UpdateScore($global:score)
 }
 
-$FoodEatenSound = New-Object System.Media.SoundPlayer "gfx\chrup90ms.wav"
+$FoodEatenSound = New-Object System.Media.SoundPlayer "$dir_gfx\chrup90ms.wav"
 $FoodEatenSound.Load()
 
 #Create a window, and set its properties.
